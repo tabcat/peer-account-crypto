@@ -24,8 +24,8 @@ describe('crypto.ecdh', function () {
       const jwk2 = JSON.parse(
         `{"pub":{"crv":"P-256","ext":true,"key_ops":[],"kty":"EC","x":"BLb6LwR2nAybTeOhxGs51mCj70iHBGARIjOLZMXy2eo","y":"pOu-ytY-h0o0Hl44Ex6i2M1PgMb63K_ZAqgCbgVRDms"},"priv":{"crv":"P-256","d":"rGhTwNGn9E9v7M8BtZF6eYngsNILhznxsNhTIg29wVI","ext":true,"key_ops":["deriveBits"],"kty":"EC","x":"BLb6LwR2nAybTeOhxGs51mCj70iHBGARIjOLZMXy2eo","y":"pOu-ytY-h0o0Hl44Ex6i2M1PgMb63K_ZAqgCbgVRDms"}}` // eslint-disable-line
       )
-      const ecdh1 = await ecdh.import(jwk1)
-      const ecdh2 = await ecdh.import(jwk2)
+      const ecdh1 = await ecdh.importKey(jwk1)
+      const ecdh2 = await ecdh.importKey(jwk2)
       await useEcdh(ecdh1, ecdh2)
     })
 
@@ -36,25 +36,25 @@ describe('crypto.ecdh', function () {
       const jwk2 = JSON.parse(
         `{"pub":{"crv":"P-521","ext":true,"key_ops":[],"kty":"EC","x":"Adx5bXEQarHhc6rUOtG3sfwoaY-RPBnHUTst9KQWGWhOZsexlgpbll_8VtzAl6uIu0tjJ_d3BZR2OkZwFpGZ7fhz","y":"ALbhYH2sT-EgGaQXsO5xwUNZK64YdKtX4EZyz8XkuuoAJ_4S8eCZgN8a3dq7Ir2oLobLIJwehygpM-Eoa1pwAwMR"},"priv":{"crv":"P-521","d":"AIWQm91tZ6s_mPjrlLV68dsbAvBN7Pw9ahTwtyRvM0S6RfjOCOE6_iRClVcQ9ztfdfaLXcLjnaZjxa0brFuiOb_e","ext":true,"key_ops":["deriveBits"],"kty":"EC","x":"Adx5bXEQarHhc6rUOtG3sfwoaY-RPBnHUTst9KQWGWhOZsexlgpbll_8VtzAl6uIu0tjJ_d3BZR2OkZwFpGZ7fhz","y":"ALbhYH2sT-EgGaQXsO5xwUNZK64YdKtX4EZyz8XkuuoAJ_4S8eCZgN8a3dq7Ir2oLobLIJwehygpM-Eoa1pwAwMR"}}` // eslint-disable-line
       )
-      const ecdh1 = await ecdh.import(jwk1)
-      const ecdh2 = await ecdh.import(jwk2)
+      const ecdh1 = await ecdh.importKey(jwk1)
+      const ecdh2 = await ecdh.importKey(jwk2)
       await useEcdh(ecdh1, ecdh2)
     })
   })
 
-  describe('.generate', function () {
+  describe('.generateKey', function () {
     it('generates a new ecdh key pair with default curve P-256', async () => {
       const curve = 'P-256'
-      const ecdh1 = await ecdh.generate()
-      const ecdh2 = await ecdh.generate()
+      const ecdh1 = await ecdh.generateKey()
+      const ecdh2 = await ecdh.generateKey()
       assert.strictEqual(ecdh1.jwk.priv.crv, curve)
       await useEcdh(ecdh1, ecdh2)
     })
 
     it('generates a new ecdh key pair with optional curve P-521', async () => {
       const curve = 'P-521'
-      const ecdh1 = await ecdh.generate(curve)
-      const ecdh2 = await ecdh.generate(curve)
+      const ecdh1 = await ecdh.generateKey(curve)
+      const ecdh2 = await ecdh.generateKey(curve)
       assert.strictEqual(ecdh1.jwk.priv.crv, curve)
       await useEcdh(ecdh1, ecdh2)
     })

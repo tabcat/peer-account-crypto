@@ -8,7 +8,7 @@ class AesKey {
     this._cryptoKey = cryptoKey
   }
 
-  static async genKey (length = 128) {
+  static async generateKey (length = 128) {
     const cryptoKey = await webcrypto.get().subtle.generateKey(
       {
         name: 'AES-GCM',

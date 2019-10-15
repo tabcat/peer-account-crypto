@@ -5,7 +5,7 @@ const crypto = require('../src')
 
 const aes = crypto.aes
 
-const { str2ab, ab2str } = crypto.utils
+const { str2ab, ab2str } = crypto.util
 
 describe('crypto.aes', function () {
   let aesKey, rawKey
@@ -30,17 +30,17 @@ describe('crypto.aes', function () {
     assert.deepStrictEqual(JSON.parse(ab2str(ivDecObj.buffer)), obj)
   }
 
-  describe('.genKey', function () {
+  describe('.generateKey', function () {
     it('generates an instance of AesKey with default length 128', async () => {
       const length = 128
-      aesKey = await aes.genKey()
+      aesKey = await aes.generateKey()
       assert.strictEqual(aesKey._cryptoKey.algorithm.length, length)
       await useAesKey()
     })
 
     it('generates an instance of AesKey with optional length 256', async () => {
       const length = 256
-      aesKey = await aes.genKey(length)
+      aesKey = await aes.generateKey(length)
       assert.strictEqual(aesKey._cryptoKey.algorithm.length, length)
       await useAesKey()
     })

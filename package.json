@@ -28,6 +28,7 @@
   "author": "andersb@tuta.io",
   "license": "MIT",
   "dependencies": {
+    "asn1.js": "^5.2.0",
     "node-webcrypto-ossl": "^1.0.48"
   },
   "devDependencies": {

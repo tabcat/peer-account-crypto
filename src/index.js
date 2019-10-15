@@ -8,5 +8,5 @@
 
 exports.ecdh = require('./ecdh')
 exports.aes = require('./aes')
-exports.utils = require('./util')
+exports.util = require('./util')
 exports.randomBytes = require('./util').randomBytes

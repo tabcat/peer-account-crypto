@@ -10,7 +10,7 @@ const bits = {
   'P-521': 521
 }
 
-exports.import = async (jwk) => {
+exports.importKey = async (jwk) => {
   if (
     (!jwk || !jwk.pub || !jwk.pub.crv) ||
     (!jwk || !jwk.priv || !jwk.priv.crv)
@@ -78,7 +78,7 @@ exports.import = async (jwk) => {
   }
 }
 
-exports.generate = async function (curve = 'P-256') {
+exports.generateKey = async function (curve = 'P-256') {
   validateCurveType(Object.keys(bits), curve)
   const pair = await webcrypto.get().subtle.generateKey(
     {
@@ -90,7 +90,7 @@ exports.generate = async function (curve = 'P-256') {
   )
   const pub = await webcrypto.get().subtle.exportKey('jwk', pair.publicKey)
   const priv = await webcrypto.get().subtle.exportKey('jwk', pair.privateKey)
-  return exports.import({ pub, priv })
+  return exports.importKey({ pub, priv })
 }
 
 const curveLengths = {
