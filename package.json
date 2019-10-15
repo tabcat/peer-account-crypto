@@ -1,0 +1,32 @@
+{
+  "name": "@tabcat/peer-account-crypto",
+  "version": "0.0.1",
+  "description": "crypto library for node and browser. uses webcrypto or node-webcrypto-ossl for primatives",
+  "main": "src/index.js",
+  "browser": {
+    "./src/node-webcrypto-ossl.js": "./src/webcrypto.js"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "standard": {
+    "env": "mocha",
+    "ignore": [
+      "test/**"
+    ]
+  },
+  "keywords": [
+    "peer",
+    "account",
+    "peer-account",
+    "crypto"
+  ],
+  "author": "andersb@tuta.io",
+  "license": "MIT",
+  "dependencies": {
+    "node-webcrypto-ossl": "^1.0.48"
+  },
+  "devDependencies": {
+    "mocha": "^6.2.1"
+  }
+}
