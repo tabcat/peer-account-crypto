@@ -60,7 +60,6 @@ class AesKey {
     if (rawKey === undefined) {
       throw new Error('rawKey must be defined')
     }
-    rawKey = rawKey.buffer || rawKey
     const cryptoKey = await webcrypto.get().subtle.importKey(
       'raw',
       rawKey,
