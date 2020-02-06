@@ -14,10 +14,7 @@
     "test": "mocha"
   },
   "standard": {
-    "env": "mocha",
-    "ignore": [
-      "test/**"
-    ]
+    "env": "mocha"
   },
   "keywords": [
     "peer",

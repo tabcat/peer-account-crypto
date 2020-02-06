@@ -36,7 +36,7 @@ exports.importKey = async (jwk) => {
     if (forcePrivate) {
       privateKey = await webcrypto.get().subtle.importKey(
         'jwk',
-        unmarshalPrivateKey(curve, forcePrivate),
+        unmarshalPrivateKey(curve, Buffer.from(forcePrivate)),
         {
           name: 'ECDH',
           namedCurve: curve
@@ -49,7 +49,7 @@ exports.importKey = async (jwk) => {
     const keys = [
       await webcrypto.get().subtle.importKey(
         'jwk',
-        unmarshalPublicKey(curve, theirPub),
+        unmarshalPublicKey(curve, Buffer.from(theirPub)),
         {
           name: 'ECDH',
           namedCurve: curve
@@ -60,7 +60,7 @@ exports.importKey = async (jwk) => {
       privateKey
     ]
 
-    return Buffer.from(await webcrypto.get().subtle.deriveBits(
+    return new Uint8Array(await webcrypto.get().subtle.deriveBits(
       {
         name: 'ECDH',
         namedCurve: curve,
