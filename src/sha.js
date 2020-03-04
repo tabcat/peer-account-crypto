@@ -2,7 +2,7 @@
 'use strict'
 const webcrypto = require('./node-webcrypto-ossl.js')
 
-module.exports = async function (length = '256', data) {
+module.exports = async function (data, length = '256') {
   return new Uint8Array(
     await webcrypto.get().subtle.digest(
       {
