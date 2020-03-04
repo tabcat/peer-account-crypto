@@ -1,6 +1,6 @@
 {
   "name": "@tabcat/peer-account-crypto",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "crypto library for node and browser. uses webcrypto or node-webcrypto-ossl for primatives",
   "repository": {
     "type": "git",
